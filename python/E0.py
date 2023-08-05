@@ -9,7 +9,7 @@ print(input("請輸入1個數字"))
 # 變數variable ，當中設定的值是可變的
 # 變數名稱規則如下
 # 1.不能跟原本內建的函式相同
-# 2.只能是字母、數字、_、的組合 (中文字也可以，只是通常部會這樣用)
+# 2.只能是字母、數字、_、的組合 (中文字也可以，只是通常不會這樣用)
 # 3.開頭不能是數字
 n=50
 
@@ -19,15 +19,19 @@ n=50
 print(type(True)) # 回傳結果為bool
 
 # 當遇到資料型態不同時，可以前面加個f，然後再使用{}，就可以轉成字串str
+#這部分有三種轉換方法，詳情可參閱https://medium.com/seaniap/python%E7%9A%84%E5%AD%97%E4%B8%B2%E6%A0%BC%E5%BC%8F%E8%AA%9E%E6%B3%95-format-%E8%88%87f-string-90d0bc219628
 n=12345
 print(f"你{n}好") # 此方法只能轉成str
+print("你{}好".format(n))
+print("你%d好" %n)#此為舊方法，通常已經不使用
+
 # 也可以前面加上想要轉變成的資料型態，在用()包住要轉變的資料
 str(n)
 print(type(float(n)))
 
 # 運算[+ ,- ,* ,/ ,// ,**(次方) ,%(餘數) ]
-print(8//2) # 為int
-print(8/2) # 為float
+print(8//2) # 為int  表只取到整數，整數位後無條件捨去，類似c++的8/2
+print(8/2) # 為float 會一直除，小數位也會被保留
 # m=3
 # m+=1 = m=3+1 =4
 
@@ -38,7 +42,7 @@ print(a!=b)
 # and,or not   與C++不同，是直接使用
 print(a!=b and a<b)
 
-# if句 後面要加[:]，且下一行的執行指令，要有四個空格
+# if句 後面要加[:]，且下一行的執行指令，要有四個空格(通常也是1個tab)
 if a==b:  #如果
     print("k")
 elif a<b:  #否則如果
@@ -55,10 +59,10 @@ def find_min(num1, num2, num3):
         return num2
     else:
         return num3
-def find_min(num1, num2, num3):
-    if num1<=num2 and num1<=num3:
+def find_max(num1, num2, num3):
+    if num1>=num2 and num1>=num3:
         return num1
-    elif num2<=num1 and num2<=num3:
+    elif num2>=num1 and num2>=num3:
         return num2
     else:
         return num3
@@ -81,7 +85,7 @@ print(num)
 
 人選 = ["大雄", "A夢", "胖虎", "小夫"]
 print(人選[-1])
-print(人選[1:3]) #[:]
+print(人選[1:3]) #[:] 含頭不含尾，[1,3)
 字串 = "無敵大麥克"
 print(字串[2:])
 print(len(字串))
@@ -113,6 +117,9 @@ for 餐點 in 早餐:
 while 編號 < len(早餐):
     print(早餐[編號])
     編號 += 1
+#由此可知其實要做迴圈，for & while 都可以達到相同的功能，但是這裡很顯然的用while會比較好
+
+#有看到這行，截圖私訊我，讓我知道你有來看
 
 #continue,break
 for 餐點 in 早餐:
@@ -120,7 +127,7 @@ for 餐點 in 早餐:
         break
     print(餐點)
 
-#for應用
+#for常用語法
 
 數列 = [1,2,3,4,5,6]
 乘積 = 1
@@ -129,7 +136,7 @@ for 數字 in 數列:
 print(乘積)
 
 #range(起始值,結束值,間距值)
-for i in range(1,10):
+for i in range(1,10):#含頭不含尾，[1,10)
     print(i)
 
 #清單合併(子項合併,按序合併,直接合併)
@@ -158,7 +165,7 @@ m = list(zip(list_1, list_3))
 print(m)
 
 #直接合併 list_combined = [list_1, list_2]
-#可視為更高層的列表的項目
+#list的維度會上升一層
 list_1 = [1, 2, 3]
 list_2 = [4, 5, 6]
 
@@ -168,7 +175,7 @@ print(list_combined)
 #資料型態為list
 X=['y',"skfu",1,1.5]
 print(X)
-print(type(X[0]))
+print(type(X[0]))#裡面的所有元素都變成str
 
 #元組tuple     和清單list相似，差在()[]，且當中的資料不可更變
 scores = (10,20,30,40,50)
@@ -191,16 +198,17 @@ print(手機.get("顏色")) #len
 #刪除pop ,popitem ,clear
 
 
-for 規格 in 手機.keys():
+for 規格 in 手機.keys(): #列出所有的key
     print(規格)
-for U in 手機.items():
+for U in 手機.items():  #列出所有的資料
     print(U)
 
 
 #集合set{}  ,一群資料，無順序性
 s1 = {3,4,5}
 s2 = {4,5,6,7}
-print(2 in s1)
+print(2 in s1)#找不到，輸出 False
+print(3 in s1)#找到，輸出 True
 
 #交集& 、聯集| 、差集- 、反交集^
 s3 = s1&s2 #取兩個集合中，相同的資料
