@@ -2,27 +2,25 @@
 #include<algorithm>
 #include<vector>
 using namespace std;
-//void swpa(int a,int b){//call by varul
-//     int t=a;
-//     a=b;
-//     b=t;
-// }
+void swap(int a,int b,int tttt){//call by varul
+    int t=a;
+    a=b;
+    b=t;
+}
 void swap(int &a,int &b){//call by refrence
     int t=a;
     a=b;
     b=t;
 }
-// void swap(int *a,int *b){//call by pointer
-//     int t=*a;
-//     *a=*b;
-//     *b=t;
-// }
+void swap(int *a,int *b){//call by pointer
+    int t=*a;
+    *a=*b;
+    *b=t;
+}
 
 void f(int &a,int &b,void (*fp)(int &a,int &b)){
     (*fp)(a,b);
 }
-
-
 bool haha(int a,int b){
     if(a<b)
         return 1;
@@ -30,6 +28,13 @@ bool haha(int a,int b){
         return 0;
 }
 int main(){  
+    int aa=10,bb=5;
+    cout<<aa<<" "<<bb<<endl;
+    swap(aa,bb);
+    cout<<aa<<" "<<bb<<endl <<endl;
+
+
+
     /*  
 
     int a=10;
